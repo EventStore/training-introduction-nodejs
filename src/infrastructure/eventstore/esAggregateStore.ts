@@ -1,29 +1,26 @@
 import { AggregateRoot } from 'src/eventsourcing/aggregateRoot';
 import { AggregateStore } from 'src/eventsourcing/aggregateStore';
+import { Event } from 'src/eventsourcing/event';
 import { EventStore } from 'src/eventsourcing/eventStore';
 
-export class ESAggregateStore implements AggregateStore {
-  constructor(private store: EventStore) {}
+export class ESAggregateStore<T extends AggregateRoot<E>, E extends Event>
+  implements AggregateStore<T, E>
+{
+  constructor(private store: EventStore, private streamPrefix: string) {}
 
-  async save<T extends AggregateRoot>(
-    type: string,
-    aggregate: T
-  ): Promise<void> {
-    const streamName = this.getStreamName(type, aggregate.id);
+  async save(aggregate: T): Promise<void> {
+    const streamName = this.getStreamName(this.streamPrefix, aggregate.id!);
     const changes = aggregate.getChanges();
 
     await this.store.appendEvents(streamName, aggregate.version, changes);
     aggregate.clearChanges();
   }
 
-  async load<T extends AggregateRoot>(
-    type: string,
-    aggregateId: string
-  ): Promise<T> {
-    const streamName = this.getStreamName(type, aggregateId);
+  async load(aggregateId: string): Promise<T> {
+    const streamName = this.getStreamName(this.streamPrefix, aggregateId);
     const aggregate: T = { id: aggregateId } as T;
 
-    const events = await this.store.loadEvents(streamName);
+    const events = await this.store.loadEvents<E>(streamName);
 
     aggregate.load(events);
     aggregate.clearChanges();
