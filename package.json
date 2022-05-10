@@ -1,0 +1,65 @@
+{
+  "name": "eventstore.training.introduction.nodejs",
+  "version": "1.0.0",
+  "description": "Training Introduction to Event Sourcing, CQRS and DDD Modelling in NodeJS",
+  "scripts": {
+    "build": "run-s lint build:ts",
+    "build:ts": "tsc",
+    "build:ts:watch": "tsc  --watch",
+    "lint": "run-s lint:eslint lint:prettier",
+    "lint:prettier": "prettier --check \"**/**/!(*.d).{ts,json,md}\"",
+    "lint:eslint": "eslint **/*.ts",
+    "fix": "run-s fix:eslint fix:prettier",
+    "fix:prettier": "prettier --write \"**/**/!(*.d).{ts,json,md}\"",
+    "fix:eslint": "eslint **/*.ts --fix",
+    "start": "ts-node -r tsconfig-paths/register ./src/index.ts",
+    "test": "run-s test:unit test:int test:api test:e2e",
+    "test:unit": "jest unit --passWithNoTests",
+    "test:int": "jest int --passWithNoTests --forceExit",
+    "test:api": "jest api --passWithNoTests --forceExit",
+    "test:e2e": "jest e2e --passWithNoTests --forceExit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EventStore/training-introduction-nodejs.git"
+  },
+  "keywords": [
+    "Event Sourcing"
+  ],
+  "author": "Event Store",
+  "bugs": {
+    "url": "https://github.com/EventStore/training-introduction-nodejs/issues"
+  },
+  "homepage": "https://github.com/EventStore/training-introduction-nodejs#readme",
+  "dependencies": {
+    "@eventstore/db-client": "3.3.1",
+    "@faker-js/faker": "6.1.2",
+    "convict": "6.2.2",
+    "dotenv": "16.0.0",
+    "dotenv-cli": "5.1.0",
+    "express": "4.17.3",
+    "mongodb": "4.5.0"
+  },
+  "devDependencies": {
+    "@types/convict": "6.1.1",
+    "@types/express": "4.17.13",
+    "@types/jest": "27.4.1",
+    "@types/node": "17.0.23",
+    "@types/supertest": "2.0.12",
+    "@types/uuid": "8.3.4",
+    "@typescript-eslint/eslint-plugin": "5.18.0",
+    "@typescript-eslint/parser": "5.18.0",
+    "eslint": "8.12.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "jest": "27.5.1",
+    "npm-run-all": "4.1.5",
+    "prettier": "^2.6.2",
+    "supertest": "6.2.2",
+    "testcontainers": "8.6.1",
+    "ts-jest": "27.1.4",
+    "ts-node": "10.7.0",
+    "tsconfig-paths": "3.14.1",
+    "typescript": "4.6.3"
+  }
+}

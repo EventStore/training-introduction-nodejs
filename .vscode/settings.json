@@ -1,0 +1,25 @@
+{
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": true,
+
+  "editor.codeActionsOnSave": {
+    // For ESLint
+    "source.fixAll.eslint": true,
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
+
+  "[sql]": {
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": ["source.formatDocument", "source.fixAll"]
+  },
+
+  "editor.tabSize": 2,
+
+  "files.exclude": {
+    "node_modules/": true,
+    "dist/": true
+  },
+  "files.eol": "\n"
+}
