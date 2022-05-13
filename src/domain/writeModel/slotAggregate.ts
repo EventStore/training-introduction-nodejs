@@ -1,7 +1,7 @@
 import {
   AggregateRoot,
   NO_EVENT_HANDLER_REGISTERED,
-} from 'src/eventsourcing/aggregateRoot';
+} from '../../eventsourcing/aggregateRoot';
 import { SlotEvent } from './events/events';
 
 export class SlotAggregate extends AggregateRoot<SlotEvent> {

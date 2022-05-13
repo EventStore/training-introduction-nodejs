@@ -1,7 +1,13 @@
-import { Command } from 'src/infrastructure/commands/command';
+import { Command } from '../../../infrastructure/commands/command';
+
+export enum SlotCommandType {
+  Book = 'Book',
+  Cancel = 'Cancel',
+  Schedule = 'Schedule',
+}
 
 export type Book = Command<
-  'book',
+  SlotCommandType.Book,
   {
     id: string;
     patientId: string;
@@ -9,7 +15,7 @@ export type Book = Command<
 >;
 
 export type Cancel = Command<
-  'cancel',
+  SlotCommandType.Cancel,
   {
     id: string;
     reason: string;
@@ -18,7 +24,7 @@ export type Cancel = Command<
 >;
 
 export type Schedule = Command<
-  'schedule',
+  SlotCommandType.Schedule,
   {
     id: string;
     startTime: Date;
@@ -27,3 +33,6 @@ export type Schedule = Command<
 >;
 
 export type SlotCommand = Book | Cancel | Schedule;
+
+export const isSlotCommand = (command: Command): command is SlotCommand =>
+  Object.keys(SlotCommandType).includes(command.type);

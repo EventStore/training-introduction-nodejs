@@ -1,4 +1,4 @@
-import { Event } from 'src/eventsourcing/event';
+import { Event } from '../../../eventsourcing/event';
 
 export type Booked = Event<
   'booked',

@@ -1,7 +1,7 @@
-import { AggregateRoot } from 'src/eventsourcing/aggregateRoot';
-import { AggregateStore } from 'src/eventsourcing/aggregateStore';
-import { Event } from 'src/eventsourcing/event';
-import { EventStore } from 'src/eventsourcing/eventStore';
+import { AggregateRoot } from '../../eventsourcing/aggregateRoot';
+import { AggregateStore } from '../../eventsourcing/aggregateStore';
+import { Event } from '../../eventsourcing/event';
+import { EventStore } from '../../eventsourcing/eventStore';
 
 export class ESAggregateStore<T extends AggregateRoot<E>, E extends Event>
   implements AggregateStore<T, E>

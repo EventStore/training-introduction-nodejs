@@ -3,7 +3,7 @@ import {
   jsonEvent,
   NO_STREAM,
 } from '@eventstore/db-client';
-import { EventStore } from 'src/eventsourcing/eventStore';
+import { EventStore } from '../../eventsourcing/eventStore';
 
 export class ESEventStore implements EventStore {
   constructor(private client: EventStoreDBClient) {}

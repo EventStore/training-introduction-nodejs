@@ -1,11 +1,17 @@
-import { AggregateStore } from 'src/eventsourcing/aggregateStore';
+import { AggregateStore } from '../../../eventsourcing/aggregateStore';
 import {
   CommandHandler,
   NO_COMMAND_HANDLER_REGISTERED,
-} from 'src/infrastructure/commands/commandHandler';
+} from '../../../infrastructure/commands/commandHandler';
 import { SlotEvent } from '../events/events';
 import { SlotAggregate } from '../slotAggregate';
-import { Book, Cancel, Schedule, SlotCommand } from './commands';
+import {
+  Book,
+  Cancel,
+  Schedule,
+  SlotCommand,
+  SlotCommandType,
+} from './commands';
 
 export class Handlers implements CommandHandler<SlotCommand> {
   constructor(
@@ -14,11 +20,11 @@ export class Handlers implements CommandHandler<SlotCommand> {
 
   handle = (command: SlotCommand): Promise<void> => {
     switch (command.type) {
-      case 'schedule':
+      case SlotCommandType.Schedule:
         return this.schedule(command);
-      case 'book':
+      case SlotCommandType.Book:
         return this.book(command);
-      case 'cancel':
+      case SlotCommandType.Cancel:
         return this.cancel(command);
       default: {
         const _: never = command;
