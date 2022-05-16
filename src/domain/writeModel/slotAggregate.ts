@@ -2,7 +2,7 @@ import {
   AggregateRoot,
   NO_EVENT_HANDLER_REGISTERED,
 } from '../../eventsourcing/aggregateRoot';
-import { SlotEvent } from './events/events';
+import { SlotEvent, SlotEventType } from './events/events';
 
 export class SlotAggregate extends AggregateRoot<SlotEvent> {
   public static readonly type = 'SlotAggregate';
@@ -16,7 +16,7 @@ export class SlotAggregate extends AggregateRoot<SlotEvent> {
     }
 
     this.raise({
-      type: 'scheduled',
+      type: SlotEventType.Scheduled,
       data: {
         slotId: id,
         startTime,
@@ -36,7 +36,7 @@ export class SlotAggregate extends AggregateRoot<SlotEvent> {
 
     if (this.isBooked && !this.isStarted(cancellationTime)) {
       this.raise({
-        type: 'cancelled',
+        type: SlotEventType.Cancelled,
         data: {
           slotId: this.id!,
           reason,
@@ -55,7 +55,7 @@ export class SlotAggregate extends AggregateRoot<SlotEvent> {
     }
 
     this.raise({
-      type: 'booked',
+      type: SlotEventType.Booked,
       data: {
         slotId: this.id!,
         patientId,
@@ -63,19 +63,18 @@ export class SlotAggregate extends AggregateRoot<SlotEvent> {
     });
   };
 
-  private isStarted(cancellationTime: Date): boolean {
-    return this.startTime !== undefined && cancellationTime > this.startTime;
-  }
+  private isStarted = (cancellationTime: Date): boolean =>
+    this.startTime !== undefined && cancellationTime > this.startTime;
 
-  protected when(event: SlotEvent): void {
+  protected when = (event: SlotEvent): void => {
     switch (event.type) {
-      case 'booked':
+      case SlotEventType.Booked:
         this.isBooked = true;
         break;
-      case 'cancelled':
+      case SlotEventType.Cancelled:
         this.isBooked = false;
         break;
-      case 'scheduled':
+      case SlotEventType.Scheduled:
         this.isScheduled = true;
         this.startTime = event.data.startTime;
         this.id = event.data.slotId;
@@ -85,7 +84,7 @@ export class SlotAggregate extends AggregateRoot<SlotEvent> {
         throw NO_EVENT_HANDLER_REGISTERED;
       }
     }
-  }
+  };
 }
 
 export const SLOT_ALREADY_SCHEDULED = 'SLOT_ALREADY_SCHEDULED';

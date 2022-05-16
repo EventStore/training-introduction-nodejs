@@ -1,7 +1,13 @@
 import { Event } from '../../../eventsourcing/event';
 
+export enum SlotEventType {
+  Booked = 'booked',
+  Cancelled = 'cancelled',
+  Scheduled = 'scheduled',
+}
+
 export type Booked = Event<
-  'booked',
+  SlotEventType.Booked,
   {
     slotId: string;
     patientId: string;
@@ -9,7 +15,7 @@ export type Booked = Event<
 >;
 
 export type Cancelled = Event<
-  'cancelled',
+  SlotEventType.Cancelled,
   {
     slotId: string;
     reason: string;
@@ -17,7 +23,7 @@ export type Cancelled = Event<
 >;
 
 export type Scheduled = Event<
-  'scheduled',
+  SlotEventType.Scheduled,
   {
     slotId: string;
     startTime: Date;

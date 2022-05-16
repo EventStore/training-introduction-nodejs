@@ -51,7 +51,7 @@ class AggregateTestRunner<
 
   public then = async (assert: (events: E[]) => void): Promise<void> => {
     await this.dispatchCommand();
-    if (!this.exception) {
+    if (this.exception) {
       throw this.exception;
     }
 
