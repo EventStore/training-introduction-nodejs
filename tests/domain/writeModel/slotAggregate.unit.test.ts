@@ -24,7 +24,7 @@ import {
 } from '../../../src/infrastructure/commands/commandHandlerMap';
 import { AggregateTest, Given } from '../../eventsourcing/aggregateTest';
 
-describe('EventStoreDBContainer', () => {
+describe('Slot Aggregate', () => {
   const tenMinutes = '00:10:00';
   const now = new Date();
   const oneHourAgo = (() => {
@@ -33,9 +33,10 @@ describe('EventStoreDBContainer', () => {
     return date;
   })();
   const slotId = now.toString();
-  let given: AggregateTest<SlotAggregate, SlotEvent, SlotCommand>;
   const patientId = 'patient-1234';
   const reason = 'No longer needed';
+
+  let given: AggregateTest<SlotAggregate, SlotEvent, SlotCommand>;
 
   beforeEach(async () => {
     given = Given(
