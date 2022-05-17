@@ -1,6 +1,7 @@
 import { PatientSlotsRepository } from '../domain/readModel/patientSlots';
 import {
   Booked,
+  Cancelled,
   Scheduled,
   SlotEvent,
   SlotEventType,
@@ -30,7 +31,7 @@ export class PatientSlotsProjection extends Projection<SlotEvent> {
       repository.markAsBooked(booked.data.slotId, booked.data.patientId)
     );
 
-    this.when(SlotEventType.Cancelled, (cancelled) =>
+    this.when(SlotEventType.Cancelled, (cancelled: Cancelled) =>
       repository.markAsCancelled(cancelled.data.slotId)
     );
   }

@@ -4,11 +4,16 @@ export type AvailableSlot = {
   duration: string;
 };
 
+export enum PatientSlotStatus {
+  Booked = 'booked',
+  Cancelled = 'cancelled',
+}
+
 export type PatientSlot = {
   slotId: string;
   startTime: Date;
   duration: string;
-  status: string;
+  status: PatientSlotStatus;
 };
 
 export interface PatientSlotsRepository {

@@ -7,8 +7,6 @@ export type AvailableSlot = {
 export interface AvailableSlotsRepository {
   add(availableSlot: AvailableSlot): void;
 
-  markAsBooked(slotId: string, patientId: string): void;
-
   markAsUnavailable(slotId: string): void;
 
   markAsAvailable(slotId: string): void;
