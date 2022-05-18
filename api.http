@@ -1,0 +1,31 @@
+### Schedule a day
+POST http://localhost:3000/api/slots
+Content-Type: application/json
+
+{
+  "startDateTime": "2022-12-06T14:30",
+  "duration": "PT10m"
+}
+
+### Get slots available on a date
+GET http://localhost:3000/api/slots/available/2022-12-06
+
+### Book a slot
+POST http://localhost:3000/api/slots/2022-12-06T14:30/book
+Content-Type: application/json
+
+{
+  "patientId": "John"
+}
+
+### Get patient's slot
+GET http://localhost:3000/api/slots/patient/John
+Content-Type: application/json
+
+### Cancel slot booking
+POST http://localhost:3000/api/slots/2022-12-06T14:30/cancel
+Content-Type: application/json
+
+{
+  "reason": "No longer needed"
+}

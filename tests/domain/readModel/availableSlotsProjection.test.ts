@@ -11,7 +11,7 @@ import { Given, ProjectionTest } from '../../eventsourcing/projectionTest';
 describe('Available Slots Projection', () => {
   const tenMinutes = '00:10:00';
   const now = new Date();
-  const slotId = now.toString();
+  const slotId = now.toISOString();
   const reason = 'No longer needed';
 
   let repository: InMemoryAvailableSlotsRepository;
@@ -27,7 +27,7 @@ describe('Available Slots Projection', () => {
       type: SlotEventType.Scheduled,
       data: {
         slotId,
-        startTime: now,
+        startTime: now.toISOString(),
         duration: tenMinutes,
       },
     }).then(
@@ -48,7 +48,7 @@ describe('Available Slots Projection', () => {
         type: SlotEventType.Scheduled,
         data: {
           slotId,
-          startTime: now,
+          startTime: now.toISOString(),
           duration: tenMinutes,
         },
       },
@@ -68,7 +68,7 @@ describe('Available Slots Projection', () => {
         type: SlotEventType.Scheduled,
         data: {
           slotId,
-          startTime: now,
+          startTime: now.toISOString(),
           duration: tenMinutes,
         },
       },

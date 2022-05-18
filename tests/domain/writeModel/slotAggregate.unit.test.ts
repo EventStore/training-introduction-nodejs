@@ -32,7 +32,7 @@ describe('Slot Aggregate', () => {
     date.setHours(date.getHours() - 1);
     return date;
   })();
-  const slotId = now.toString();
+  const slotId = now.toISOString();
   const patientId = 'patient-1234';
   const reason = 'No longer needed';
 
@@ -51,7 +51,7 @@ describe('Slot Aggregate', () => {
       type: SlotEventType.Scheduled,
       data: {
         slotId,
-        startTime: now,
+        startTime: now.toISOString(),
         duration: tenMinutes,
       },
     })
@@ -70,7 +70,7 @@ describe('Slot Aggregate', () => {
       type: SlotEventType.Scheduled,
       data: {
         slotId,
-        startTime: now,
+        startTime: now.toISOString(),
         duration: tenMinutes,
       },
     })
@@ -106,7 +106,7 @@ describe('Slot Aggregate', () => {
         type: SlotEventType.Scheduled,
         data: {
           slotId,
-          startTime: now,
+          startTime: now.toISOString(),
           duration: tenMinutes,
         },
       },
@@ -133,7 +133,7 @@ describe('Slot Aggregate', () => {
         type: SlotEventType.Scheduled,
         data: {
           slotId,
-          startTime: now,
+          startTime: now.toISOString(),
           duration: tenMinutes,
         },
       },
@@ -167,7 +167,7 @@ describe('Slot Aggregate', () => {
         type: SlotEventType.Scheduled,
         data: {
           slotId,
-          startTime: now,
+          startTime: now.toISOString(),
           duration: tenMinutes,
         },
       },
@@ -204,7 +204,7 @@ describe('Slot Aggregate', () => {
         type: SlotEventType.Scheduled,
         data: {
           slotId,
-          startTime: oneHourAgo,
+          startTime: oneHourAgo.toISOString(),
           duration: tenMinutes,
         },
       },
@@ -233,7 +233,7 @@ describe('Slot Aggregate', () => {
         slotId,
         startTime: (() => {
           now.setHours(now.getHours() - 1);
-          return now;
+          return now.toISOString();
         })(),
         duration: tenMinutes,
       },

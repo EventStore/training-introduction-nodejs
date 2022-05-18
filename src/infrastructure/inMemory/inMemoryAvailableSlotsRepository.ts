@@ -32,5 +32,7 @@ export class InMemoryAvailableSlotsRepository
   };
 
   getSlotsAvailableOn = (date: Date): AvailableSlot[] =>
-    this.available.filter((s) => s.startTime.getTime() === date.getTime());
+    this.available.filter(
+      (s) => s.startTime.toDateString() === date.toDateString()
+    );
 }

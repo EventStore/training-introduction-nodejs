@@ -19,7 +19,7 @@ export class SlotAggregate extends AggregateRoot<SlotEvent> {
       type: SlotEventType.Scheduled,
       data: {
         slotId: id,
-        startTime,
+        startTime: startTime.toISOString(),
         duration,
       },
     });
@@ -38,7 +38,7 @@ export class SlotAggregate extends AggregateRoot<SlotEvent> {
       this.raise({
         type: SlotEventType.Cancelled,
         data: {
-          slotId: this.id!,
+          slotId: this.id,
           reason,
         },
       });
@@ -57,7 +57,7 @@ export class SlotAggregate extends AggregateRoot<SlotEvent> {
     this.raise({
       type: SlotEventType.Booked,
       data: {
-        slotId: this.id!,
+        slotId: this.id,
         patientId,
       },
     });
@@ -76,7 +76,7 @@ export class SlotAggregate extends AggregateRoot<SlotEvent> {
         break;
       case SlotEventType.Scheduled:
         this.isScheduled = true;
-        this.startTime = event.data.startTime;
+        this.startTime = new Date(event.data.startTime);
         this.id = event.data.slotId;
         break;
       default: {

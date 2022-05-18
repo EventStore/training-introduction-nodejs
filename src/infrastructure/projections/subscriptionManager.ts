@@ -6,9 +6,10 @@ import { Event } from '../../eventsourcing/event';
 import { Subscription } from './subscription';
 
 export class SubscriptionManager {
+  private readonly subscriptions: Subscription[];
   constructor(
     private readonly client: EventStoreDBClient,
-    private readonly subscriptions: Subscription[]
+    ...subscriptions: Subscription[]
   ) {
     this.client = client;
     this.subscriptions = subscriptions;

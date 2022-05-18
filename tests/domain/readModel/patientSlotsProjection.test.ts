@@ -13,7 +13,7 @@ import { Given, ProjectionTest } from '../../eventsourcing/projectionTest';
 describe('Patient Slots Projection', () => {
   const tenMinutes = '00:10:00';
   const now = new Date();
-  const slotId = now.toString();
+  const slotId = now.toISOString();
   const patientId = 'patient-1234';
   const patient2Id = 'patient-5678';
   const reason = 'No longer needed';
@@ -35,7 +35,7 @@ describe('Patient Slots Projection', () => {
       type: SlotEventType.Scheduled,
       data: {
         slotId,
-        startTime: now,
+        startTime: now.toISOString(),
         duration: tenMinutes,
       },
     }).then([], repository.getPatientSlots(patientId));
@@ -47,7 +47,7 @@ describe('Patient Slots Projection', () => {
         type: SlotEventType.Scheduled,
         data: {
           slotId,
-          startTime: now,
+          startTime: now.toISOString(),
           duration: tenMinutes,
         },
       },
@@ -77,7 +77,7 @@ describe('Patient Slots Projection', () => {
         type: SlotEventType.Scheduled,
         data: {
           slotId,
-          startTime: now,
+          startTime: now.toISOString(),
           duration: tenMinutes,
         },
       },
@@ -114,7 +114,7 @@ describe('Patient Slots Projection', () => {
         type: SlotEventType.Scheduled,
         data: {
           slotId,
-          startTime: now,
+          startTime: now.toISOString(),
           duration: tenMinutes,
         },
       },

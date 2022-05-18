@@ -13,7 +13,7 @@ export class AvailableSlotsProjection extends Projection<SlotEvent> {
     this.when(SlotEventType.Scheduled, (scheduled: Scheduled) => {
       this.repository.add({
         slotId: scheduled.data.slotId,
-        startTime: scheduled.data.startTime,
+        startTime: new Date(scheduled.data.startTime),
         duration: scheduled.data.duration,
       });
     });

@@ -1,5 +1,5 @@
-import { Projection } from 'src/infrastructure/projections/projection';
 import { Event } from '../../src/eventsourcing/event';
+import { Projection } from '../../src/infrastructure/projections/projection';
 
 export type ProjectionTest<E extends Event, View> = (
   ...events: E[]

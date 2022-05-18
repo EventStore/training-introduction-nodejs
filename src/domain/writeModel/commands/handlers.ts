@@ -36,18 +36,18 @@ export class Handlers implements CommandHandler<SlotCommand> {
   private schedule = async ({ data: schedule }: Schedule): Promise<void> => {
     const aggregate = await this.aggregateStore.load(schedule.id);
     aggregate.schedule(schedule.id, schedule.startTime, schedule.duration);
-    this.aggregateStore.save(aggregate);
+    await this.aggregateStore.save(aggregate);
   };
 
   private book = async ({ data: book }: Book): Promise<void> => {
     const aggregate = await this.aggregateStore.load(book.id);
     aggregate.book(book.patientId);
-    this.aggregateStore.save(aggregate);
+    await this.aggregateStore.save(aggregate);
   };
 
   private cancel = async ({ data: cancel }: Cancel): Promise<void> => {
     const aggregate = await this.aggregateStore.load(cancel.id);
     aggregate.cancel(cancel.reason, cancel.cancellationTime);
-    this.aggregateStore.save(aggregate);
+    await this.aggregateStore.save(aggregate);
   };
 }

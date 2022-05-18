@@ -26,7 +26,7 @@ export type Scheduled = Event<
   SlotEventType.Scheduled,
   {
     slotId: string;
-    startTime: Date;
+    startTime: string;
     duration: string;
   }
 >;
