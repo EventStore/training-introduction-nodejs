@@ -1,2 +1,6 @@
-*.js text eol=lf
-*.ts text eol=lf
+* text=auto eol=lf
+*.png binary
+*.ttf binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
