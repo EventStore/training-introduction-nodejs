@@ -1,27 +1,27 @@
 import {
-  isSlotCommand,
-  SlotCommand,
-  SlotCommandType,
-} from '../../../src/domain/writeModel/commands/commands';
-import { Handlers } from '../../../src/domain/writeModel/commands/handlers';
-import {
-  Booked,
-  Cancelled,
-  SlotEvent,
-  SlotEventType,
-} from '../../../src/domain/writeModel/events/events';
-import {
   SlotAggregate,
   SLOT_ALREADY_BOOKED,
   SLOT_ALREADY_SCHEDULED,
   SLOT_ALREADY_STARTED,
   SLOT_NOT_BOOKED,
   SLOT_NOT_SCHEDULED,
-} from '../../../src/domain/writeModel/slotAggregate';
+} from '../../../src/domain/writeModel';
+import { Handlers } from '../../../src/domain/writeModel/commands';
+import {
+  isSlotCommand,
+  SlotCommand,
+  SlotCommandType,
+} from '../../../src/domain/writeModel/commands/commands';
+import {
+  Booked,
+  Cancelled,
+  SlotEvent,
+  SlotEventType,
+} from '../../../src/domain/writeModel/events';
 import {
   CommandHandlerMap,
   MapHandler,
-} from '../../../src/infrastructure/commands/commandHandlerMap';
+} from '../../../src/infrastructure/commands';
 import { AggregateTest, Given } from '../../eventsourcing/aggregateTest';
 
 describe('Slot Aggregate', () => {

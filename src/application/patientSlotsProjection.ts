@@ -5,8 +5,8 @@ import {
   Scheduled,
   SlotEvent,
   SlotEventType,
-} from '../domain/writeModel/events/events';
-import { Projection } from '../infrastructure/projections/projection';
+} from '../domain/writeModel/events';
+import { Projection } from '../infrastructure/projections';
 
 export class PatientSlotsProjection extends Projection<SlotEvent> {
   constructor(private repository: PatientSlotsRepository) {

@@ -1,11 +1,11 @@
 import { v4 as uuid } from 'uuid';
-import { AvailableSlotsProjection } from '../../../src/application/availableSlotsProjection';
+import { AvailableSlotsProjection } from '../../../src/application';
 import { AvailableSlot } from '../../../src/domain/readModel/availableSlots';
 import {
   SlotEvent,
   SlotEventType,
-} from '../../../src/domain/writeModel/events/events';
-import { InMemoryAvailableSlotsRepository } from '../../../src/infrastructure/inMemory/inMemoryAvailableSlotsRepository';
+} from '../../../src/domain/writeModel/events';
+import { InMemoryAvailableSlotsRepository } from '../../../src/infrastructure/inMemory';
 import { Given, ProjectionTest } from '../../eventsourcing/projectionTest';
 
 describe('Available Slots Projection', () => {

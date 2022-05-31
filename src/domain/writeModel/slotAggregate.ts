@@ -1,8 +1,8 @@
 import {
   AggregateRoot,
   NO_EVENT_HANDLER_REGISTERED,
-} from '../../eventsourcing/aggregateRoot';
-import { SlotEvent, SlotEventType } from './events/events';
+} from '../../eventsourcing';
+import { SlotEvent, SlotEventType } from './events';
 
 export class SlotAggregate extends AggregateRoot<SlotEvent> {
   public static readonly type = 'SlotAggregate';

@@ -21,3 +21,6 @@ export const disconnectFromEventStoreDB = async () => {
     console.error(ex);
   }
 };
+
+export * from './esAggregateStore';
+export * from './esEventStore';

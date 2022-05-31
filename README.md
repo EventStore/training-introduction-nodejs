@@ -12,7 +12,7 @@ You'll need to have [NodeJS 16.15.0 (or later)](https://nodejs.org/en/download/)
 2. Make sure you are on master branch.
 3. Run:
    - `npm install` to install all of the dependencies,
-   - `npm build` to build source code
+   - `npm run build` to build source code
 4. To start EventStoreDB using Docker, run:
 
    - `docker-compose up` - for X86-based computers,

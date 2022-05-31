@@ -1,4 +1,4 @@
-import { Command } from '../../../infrastructure/commands/command';
+import { Command } from '../../../infrastructure/commands';
 
 export enum SlotCommandType {
   Book = 'Book',

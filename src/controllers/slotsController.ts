@@ -4,8 +4,8 @@ import {
   Cancel,
   Schedule,
   SlotCommandType,
-} from 'src/domain/writeModel/commands/commands';
-import { Dispatcher } from 'src/infrastructure/commands/dispatcher';
+} from '../domain/writeModel/commands/';
+import { Dispatcher } from '../infrastructure/commands/';
 
 export const getSlotsController = (dispatcher: Dispatcher) => {
   const router = Router();

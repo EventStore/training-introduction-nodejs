@@ -1,4 +1,4 @@
-import { PatientSlotsProjection } from '../../../src/application/patientSlotsProjection';
+import { PatientSlotsProjection } from '../../../src/application';
 import {
   PatientSlot,
   PatientSlotStatus,
@@ -6,8 +6,8 @@ import {
 import {
   SlotEvent,
   SlotEventType,
-} from '../../../src/domain/writeModel/events/events';
-import { InMemoryPatientSlotsRepository } from '../../../src/infrastructure/inMemory/inMemoryPatientSlotsRepository';
+} from '../../../src/domain/writeModel/events';
+import { InMemoryPatientSlotsRepository } from '../../../src/infrastructure/inMemory';
 import { Given, ProjectionTest } from '../../eventsourcing/projectionTest';
 
 describe('Patient Slots Projection', () => {

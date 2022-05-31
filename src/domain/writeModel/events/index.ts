@@ -1,4 +1,4 @@
-import { Event } from '../../../eventsourcing/event';
+import { Event } from '../../../eventsourcing';
 
 export enum SlotEventType {
   Booked = 'booked',

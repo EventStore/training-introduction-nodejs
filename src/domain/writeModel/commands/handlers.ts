@@ -1,9 +1,9 @@
-import { AggregateStore } from '../../../eventsourcing/aggregateStore';
+import { AggregateStore } from '../../../eventsourcing';
 import {
   CommandHandler,
   NO_COMMAND_HANDLER_REGISTERED,
-} from '../../../infrastructure/commands/commandHandler';
-import { SlotEvent } from '../events/events';
+} from '../../../infrastructure/commands';
+import { SlotEvent } from '../events';
 import { SlotAggregate } from '../slotAggregate';
 import {
   Book,

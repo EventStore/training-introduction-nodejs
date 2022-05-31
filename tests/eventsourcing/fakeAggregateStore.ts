@@ -1,6 +1,4 @@
-import { AggregateRoot } from '../../src/eventsourcing/aggregateRoot';
-import { AggregateStore } from '../../src/eventsourcing/aggregateStore';
-import { Event } from '../../src/eventsourcing/event';
+import { AggregateRoot, AggregateStore, Event } from '../../src/eventsourcing';
 
 export class FakeAggregateStore<T extends AggregateRoot<E>, E extends Event>
   implements AggregateStore<T, E>

@@ -7,7 +7,7 @@ import { getPatientSlotsController } from './controllers/patientSlotsController'
 import { getSlotsController } from './controllers/slotsController';
 import { isSlotCommand } from './domain/writeModel/commands/commands';
 import { Handlers } from './domain/writeModel/commands/handlers';
-import { SlotEvent } from './domain/writeModel/events/events';
+import { SlotEvent } from './domain/writeModel/events';
 import { SlotAggregate } from './domain/writeModel/slotAggregate';
 import {
   CommandHandlerMap,
@@ -32,7 +32,7 @@ process.once('SIGTERM', disconnectFromEventStoreDB);
 const eventStore = new ESEventStore(eventStoreDBClient);
 const aggregateStore = new ESAggregateStore<SlotAggregate, SlotEvent>(
   eventStore,
-  'Slot',
+  SlotAggregate.type,
   () => new SlotAggregate()
 );
 const slotCommandHandler = new Handlers(aggregateStore);

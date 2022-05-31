@@ -1,4 +1,4 @@
-import { Event } from '../../eventsourcing/event';
+import { Event } from '../../eventsourcing';
 import { Projection } from './projection';
 import { Subscription } from './subscription';
 

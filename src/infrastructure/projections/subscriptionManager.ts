@@ -2,7 +2,7 @@ import {
   AllStreamResolvedEvent,
   EventStoreDBClient,
 } from '@eventstore/db-client';
-import { Event } from '../../eventsourcing/event';
+import { Event } from '../../eventsourcing';
 import { Subscription } from './subscription';
 
 export class SubscriptionManager {

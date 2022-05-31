@@ -1,4 +1,4 @@
-import { Event } from '../../eventsourcing/event';
+import { Event } from '../../eventsourcing';
 import { EventHandler } from './eventHandler';
 
 export class Projection<E extends Event> {

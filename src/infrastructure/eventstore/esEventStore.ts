@@ -4,8 +4,7 @@ import {
   NO_STREAM,
   StreamNotFoundError,
 } from '@eventstore/db-client';
-import { Event } from '../../eventsourcing/event';
-import { EventStore } from '../../eventsourcing/eventStore';
+import { Event, EventStore } from '../../eventsourcing';
 
 export class ESEventStore implements EventStore {
   constructor(private client: EventStoreDBClient) {}

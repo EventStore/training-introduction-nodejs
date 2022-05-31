@@ -1,9 +1,9 @@
-import { AggregateRoot } from '../../src/eventsourcing/aggregateRoot';
-import { AggregateStore } from '../../src/eventsourcing/aggregateStore';
-import { Event } from '../../src/eventsourcing/event';
-import { Command } from '../../src/infrastructure/commands/command';
-import { CommandHandlerMap } from '../../src/infrastructure/commands/commandHandlerMap';
-import { Dispatcher } from '../../src/infrastructure/commands/dispatcher';
+import { AggregateRoot, AggregateStore, Event } from '../../src/eventsourcing';
+import {
+  Command,
+  CommandHandlerMap,
+  Dispatcher,
+} from '../../src/infrastructure/commands';
 import { FakeAggregateStore } from './fakeAggregateStore';
 
 export type AggregateTest<
