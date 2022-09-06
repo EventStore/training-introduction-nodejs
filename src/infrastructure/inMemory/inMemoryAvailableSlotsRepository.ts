@@ -14,21 +14,15 @@ export class InMemoryAvailableSlotsRepository
   };
 
   markAsUnavailable = (slotId: string): void => {
-    const slot = this.available.find((s) => s.slotId === slotId);
-
-    if (!slot) return;
-
-    this.available = this.available.filter((s) => s !== slot);
-    this.booked.push(slot);
+    // const slot = this.available.find((s) => s.slotId === slotId);
+    //
+    // if (!slot) return;
+    //
+    // this.available = this.available.filter((s) => s !== slot);
+    // this.booked.push(slot);
   };
 
   markAsAvailable = (slotId: string): void => {
-    const slot = this.booked.find((s) => s.slotId === slotId);
-
-    if (!slot) return;
-
-    this.booked = this.booked.filter((s) => s !== slot);
-    this.available.push(slot);
   };
 
   getSlotsAvailableOn = (date: Date): AvailableSlot[] =>

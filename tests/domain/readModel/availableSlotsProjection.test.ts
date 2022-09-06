@@ -63,38 +63,6 @@ describe('Available Slots Projection', () => {
   });
 
   it('should add slot again if booking was cancelled', () => {
-    given(
-      {
-        type: SlotEventType.Scheduled,
-        data: {
-          slotId,
-          startTime: now.toISOString(),
-          duration: tenMinutes,
-        },
-      },
-      {
-        type: SlotEventType.Booked,
-        data: {
-          slotId,
-          patientId: uuid(),
-        },
-      },
-      {
-        type: SlotEventType.Cancelled,
-        data: {
-          slotId,
-          reason,
-        },
-      }
-    ).then(
-      [
-        {
-          slotId,
-          startTime: now,
-          duration: tenMinutes,
-        },
-      ],
-      repository.getSlotsAvailableOn(now)
-    );
+  
   });
 });
