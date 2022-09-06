@@ -4,7 +4,7 @@
 
 ## Prerequisities
 
-You'll need to have [NodeJS 16.15.0 (or later)](https://nodejs.org/en/download/) and [docker](https://www.docker.com/products/docker-desktop) installed to be able to run the project and tests. You'll need to also have Java IDE (e.g. Visual Studio Code, WebStorm or other preferred one).
+You'll need to have [NodeJS 16.15.0 (or later)](https://nodejs.org/en/download/) and [docker](https://www.docker.com/products/docker-desktop) installed to be able to run the project and tests. You'll need to also have Javascript IDE (e.g. Visual Studio Code, WebStorm or other preferred one).
 
 ## Steps
 
