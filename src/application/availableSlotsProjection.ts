@@ -18,12 +18,12 @@ export class AvailableSlotsProjection extends Projection<SlotEvent> {
       });
     });
 
-    this.when(SlotEventType.Booked, (booked: Booked) =>
-      repository.markAsUnavailable(booked.data.slotId)
-    );
-
-    this.when(SlotEventType.Cancelled, (cancelled) =>
-      repository.markAsAvailable(cancelled.data.slotId)
-    );
+    // this.when(SlotEventType.Booked, (booked: Booked) =>
+    //   repository.markAsUnavailable(booked.data.slotId)
+    // );
+    //
+    // this.when(SlotEventType.Cancelled, (cancelled) =>
+    //   repository.markAsAvailable(cancelled.data.slotId)
+    // );
   }
 }

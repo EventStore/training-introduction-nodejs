@@ -14,53 +14,19 @@ export class SlotAggregate extends AggregateRoot<SlotEvent> {
     if (this.isScheduled) {
       throw SLOT_ALREADY_SCHEDULED;
     }
-
-    this.raise({
-      type: SlotEventType.Scheduled,
-      data: {
-        slotId: id,
-        startTime: startTime.toISOString(),
-        duration,
-      },
-    });
+    // raise a correct event here
   };
 
   cancel = (reason: string, cancellationTime: Date): void => {
-    if (!this.isBooked) {
-      throw SLOT_NOT_BOOKED;
-    }
-
-    if (this.isStarted(cancellationTime)) {
-      throw SLOT_ALREADY_STARTED;
-    }
-
-    if (this.isBooked && !this.isStarted(cancellationTime)) {
-      this.raise({
-        type: SlotEventType.Cancelled,
-        data: {
-          slotId: this.id,
-          reason,
-        },
-      });
-    }
+    // check whether booked 
+    // check whether started
+    // raise a correct event here
   };
 
   book = (patientId: string): void => {
-    if (!this.isScheduled) {
-      throw SLOT_NOT_SCHEDULED;
-    }
-
-    if (this.isBooked) {
-      throw SLOT_ALREADY_BOOKED;
-    }
-
-    this.raise({
-      type: SlotEventType.Booked,
-      data: {
-        slotId: this.id,
-        patientId,
-      },
-    });
+    // check whether scheduled 
+    // check whether booked
+    // raise a correct event here
   };
 
   private isStarted = (cancellationTime: Date): boolean =>
@@ -69,15 +35,13 @@ export class SlotAggregate extends AggregateRoot<SlotEvent> {
   protected when = (event: SlotEvent): void => {
     switch (event.type) {
       case SlotEventType.Booked:
-        this.isBooked = true;
+        // change state
         break;
       case SlotEventType.Cancelled:
-        this.isBooked = false;
+        // change state
         break;
       case SlotEventType.Scheduled:
-        this.isScheduled = true;
-        this.startTime = new Date(event.data.startTime);
-        this.id = event.data.slotId;
+        // change state
         break;
       default: {
         const _: never = event;

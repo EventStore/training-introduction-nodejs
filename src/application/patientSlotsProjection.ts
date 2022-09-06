@@ -19,12 +19,12 @@ export class PatientSlotsProjection extends Projection<SlotEvent> {
       });
     });
 
-    this.when(SlotEventType.Booked, (booked: Booked) =>
-      repository.markAsBooked(booked.data.slotId, booked.data.patientId)
-    );
-
-    this.when(SlotEventType.Cancelled, (cancelled: Cancelled) =>
-      repository.markAsCancelled(cancelled.data.slotId)
-    );
+    // this.when(SlotEventType.Booked, (booked: Booked) =>
+    //   repository.markAsBooked(booked.data.slotId, booked.data.patientId)
+    // );
+    //
+    // this.when(SlotEventType.Cancelled, (cancelled: Cancelled) =>
+    //   repository.markAsCancelled(cancelled.data.slotId)
+    // );
   }
 }

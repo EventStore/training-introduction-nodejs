@@ -40,15 +40,15 @@ export const getSlotsController = (dispatcher: Dispatcher) => {
     async (request: PostBook, response: Response, next: NextFunction) => {
       try {
         const aggregateId = request.params.aggregateId;
-        const command: Book = {
-          type: SlotCommandType.Book,
-          data: {
-            id: aggregateId,
-            patientId: request.body.patientId,
-          },
-        };
+        // const command: Book = {
+        //   type: SlotCommandType.Book,
+        //   data: {
+        //     id: aggregateId,
+        //     patientId: request.body.patientId,
+        //   },
+        // };
 
-        await dispatcher.dispatch(command);
+        // await dispatcher.dispatch(command);
 
         response.setHeader('Location', `/api/slots/${aggregateId}`);
         response.sendStatus(200);
@@ -64,16 +64,16 @@ export const getSlotsController = (dispatcher: Dispatcher) => {
     async (request: PostCancel, response: Response, next: NextFunction) => {
       try {
         const aggregateId = request.params.aggregateId;
-        const command: Cancel = {
-          type: SlotCommandType.Cancel,
-          data: {
-            id: aggregateId,
-            reason: request.body.reason,
-            cancellationTime: new Date(),
-          },
-        };
+        // const command: Cancel = {
+        //   type: SlotCommandType.Cancel,
+        //   data: {
+        //     id: aggregateId,
+        //     reason: request.body.reason,
+        //     cancellationTime: new Date(),
+        //   },
+        // };
 
-        await dispatcher.dispatch(command);
+        // await dispatcher.dispatch(command);
 
         response.setHeader('Location', `/api/slots/${aggregateId}`);
         response.sendStatus(200);

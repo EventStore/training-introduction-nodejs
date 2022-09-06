@@ -9,16 +9,12 @@ export enum SlotEventType {
 export type Booked = Event<
   SlotEventType.Booked,
   {
-    slotId: string;
-    patientId: string;
   }
 >;
 
 export type Cancelled = Event<
   SlotEventType.Cancelled,
   {
-    slotId: string;
-    reason: string;
   }
 >;
 

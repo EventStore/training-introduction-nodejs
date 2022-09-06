@@ -40,14 +40,14 @@ export class Handlers implements CommandHandler<SlotCommand> {
   };
 
   private book = async ({ data: book }: Book): Promise<void> => {
-    const aggregate = await this.aggregateStore.load(book.id);
-    aggregate.book(book.patientId);
-    await this.aggregateStore.save(aggregate);
+    // const aggregate = await this.aggregateStore.load(book.id);
+    // aggregate.book(book.patientId);
+    // await this.aggregateStore.save(aggregate);
   };
 
   private cancel = async ({ data: cancel }: Cancel): Promise<void> => {
-    const aggregate = await this.aggregateStore.load(cancel.id);
-    aggregate.cancel(cancel.reason, cancel.cancellationTime);
-    await this.aggregateStore.save(aggregate);
+    // const aggregate = await this.aggregateStore.load(cancel.id);
+    // aggregate.cancel(cancel.reason, cancel.cancellationTime);
+    // await this.aggregateStore.save(aggregate);
   };
 }

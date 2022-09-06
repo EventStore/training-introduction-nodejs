@@ -9,17 +9,12 @@ export enum SlotCommandType {
 export type Book = Command<
   SlotCommandType.Book,
   {
-    id: string;
-    patientId: string;
   }
 >;
 
 export type Cancel = Command<
   SlotCommandType.Cancel,
   {
-    id: string;
-    reason: string;
-    cancellationTime: Date;
   }
 >;
 

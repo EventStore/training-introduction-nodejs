@@ -41,126 +41,126 @@ describe('Patient Slots Projection', () => {
     }).then([], repository.getPatientSlots(patientId));
   });
 
-  it('should return a slot if was booked', () => {
-    given(
-      {
-        type: SlotEventType.Scheduled,
-        data: {
-          slotId,
-          startTime: now.toISOString(),
-          duration: tenMinutes,
-        },
-      },
-      {
-        type: SlotEventType.Booked,
-        data: {
-          slotId,
-          patientId,
-        },
-      }
-    ).then(
-      [
-        {
-          slotId,
-          startTime: now,
-          duration: tenMinutes,
-          status: PatientSlotStatus.Booked,
-        },
-      ],
-      repository.getPatientSlots(patientId)
-    );
-  });
-
-  it('should return a slot if was cancelled', () => {
-    given(
-      {
-        type: SlotEventType.Scheduled,
-        data: {
-          slotId,
-          startTime: now.toISOString(),
-          duration: tenMinutes,
-        },
-      },
-      {
-        type: SlotEventType.Booked,
-        data: {
-          slotId,
-          patientId,
-        },
-      },
-      {
-        type: SlotEventType.Cancelled,
-        data: {
-          slotId,
-          reason,
-        },
-      }
-    ).then(
-      [
-        {
-          slotId,
-          startTime: now,
-          duration: tenMinutes,
-          status: PatientSlotStatus.Cancelled,
-        },
-      ],
-      repository.getPatientSlots(patientId)
-    );
-  });
-
-  it('should return both cancelled and booked', () => {
-    given(
-      {
-        type: SlotEventType.Scheduled,
-        data: {
-          slotId,
-          startTime: now.toISOString(),
-          duration: tenMinutes,
-        },
-      },
-      {
-        type: SlotEventType.Booked,
-        data: {
-          slotId,
-          patientId,
-        },
-      },
-      {
-        type: SlotEventType.Cancelled,
-        data: {
-          slotId,
-          reason,
-        },
-      },
-      {
-        type: SlotEventType.Booked,
-        data: {
-          slotId,
-          patientId: patient2Id,
-        },
-      }
-    )
-      .then(
-        [
-          {
-            slotId,
-            startTime: now,
-            duration: tenMinutes,
-            status: PatientSlotStatus.Cancelled,
-          },
-        ],
-        repository.getPatientSlots(patientId)
-      )
-      .then(
-        [
-          {
-            slotId,
-            startTime: now,
-            duration: tenMinutes,
-            status: PatientSlotStatus.Booked,
-          },
-        ],
-        repository.getPatientSlots(patient2Id)
-      );
-  });
+  // it('should return a slot if was booked', () => {
+  //   given(
+  //     {
+  //       type: SlotEventType.Scheduled,
+  //       data: {
+  //         slotId,
+  //         startTime: now.toISOString(),
+  //         duration: tenMinutes,
+  //       },
+  //     },
+  //     {
+  //       type: SlotEventType.Booked,
+  //       data: {
+  //         slotId,
+  //         patientId,
+  //       },
+  //     }
+  //   ).then(
+  //     [
+  //       {
+  //         slotId,
+  //         startTime: now,
+  //         duration: tenMinutes,
+  //         status: PatientSlotStatus.Booked,
+  //       },
+  //     ],
+  //     repository.getPatientSlots(patientId)
+  //   );
+  // });
+  //
+  // it('should return a slot if was cancelled', () => {
+  //   given(
+  //     {
+  //       type: SlotEventType.Scheduled,
+  //       data: {
+  //         slotId,
+  //         startTime: now.toISOString(),
+  //         duration: tenMinutes,
+  //       },
+  //     },
+  //     {
+  //       type: SlotEventType.Booked,
+  //       data: {
+  //         slotId,
+  //         patientId,
+  //       },
+  //     },
+  //     {
+  //       type: SlotEventType.Cancelled,
+  //       data: {
+  //         slotId,
+  //         reason,
+  //       },
+  //     }
+  //   ).then(
+  //     [
+  //       {
+  //         slotId,
+  //         startTime: now,
+  //         duration: tenMinutes,
+  //         status: PatientSlotStatus.Cancelled,
+  //       },
+  //     ],
+  //     repository.getPatientSlots(patientId)
+  //   );
+  // });
+  //
+  // it('should return both cancelled and booked', () => {
+  //   given(
+  //     {
+  //       type: SlotEventType.Scheduled,
+  //       data: {
+  //         slotId,
+  //         startTime: now.toISOString(),
+  //         duration: tenMinutes,
+  //       },
+  //     },
+  //     {
+  //       type: SlotEventType.Booked,
+  //       data: {
+  //         slotId,
+  //         patientId,
+  //       },
+  //     },
+  //     {
+  //       type: SlotEventType.Cancelled,
+  //       data: {
+  //         slotId,
+  //         reason,
+  //       },
+  //     },
+  //     {
+  //       type: SlotEventType.Booked,
+  //       data: {
+  //         slotId,
+  //         patientId: patient2Id,
+  //       },
+  //     }
+  //   )
+  //     .then(
+  //       [
+  //         {
+  //           slotId,
+  //           startTime: now,
+  //           duration: tenMinutes,
+  //           status: PatientSlotStatus.Cancelled,
+  //         },
+  //       ],
+  //       repository.getPatientSlots(patientId)
+  //     )
+  //     .then(
+  //       [
+  //         {
+  //           slotId,
+  //           startTime: now,
+  //           duration: tenMinutes,
+  //           status: PatientSlotStatus.Booked,
+  //         },
+  //       ],
+  //       repository.getPatientSlots(patient2Id)
+  //     );
+  // });
 });

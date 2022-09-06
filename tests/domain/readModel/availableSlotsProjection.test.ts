@@ -42,59 +42,59 @@ describe('Available Slots Projection', () => {
     );
   });
 
-  it('should remove slot from the list if it was booked', () => {
-    given(
-      {
-        type: SlotEventType.Scheduled,
-        data: {
-          slotId,
-          startTime: now.toISOString(),
-          duration: tenMinutes,
-        },
-      },
-      {
-        type: SlotEventType.Booked,
-        data: {
-          slotId,
-          patientId: uuid(),
-        },
-      }
-    ).then([], repository.getSlotsAvailableOn(now));
-  });
-
-  it('should add slot again if booking was cancelled', () => {
-    given(
-      {
-        type: SlotEventType.Scheduled,
-        data: {
-          slotId,
-          startTime: now.toISOString(),
-          duration: tenMinutes,
-        },
-      },
-      {
-        type: SlotEventType.Booked,
-        data: {
-          slotId,
-          patientId: uuid(),
-        },
-      },
-      {
-        type: SlotEventType.Cancelled,
-        data: {
-          slotId,
-          reason,
-        },
-      }
-    ).then(
-      [
-        {
-          slotId,
-          startTime: now,
-          duration: tenMinutes,
-        },
-      ],
-      repository.getSlotsAvailableOn(now)
-    );
-  });
+  // it('should remove slot from the list if it was booked', () => {
+  //   given(
+  //     {
+  //       type: SlotEventType.Scheduled,
+  //       data: {
+  //         slotId,
+  //         startTime: now.toISOString(),
+  //         duration: tenMinutes,
+  //       },
+  //     },
+  //     {
+  //       type: SlotEventType.Booked,
+  //       data: {
+  //         slotId,
+  //         patientId: uuid(),
+  //       },
+  //     }
+  //   ).then([], repository.getSlotsAvailableOn(now));
+  // });
+  //
+  // it('should add slot again if booking was cancelled', () => {
+  //   given(
+  //     {
+  //       type: SlotEventType.Scheduled,
+  //       data: {
+  //         slotId,
+  //         startTime: now.toISOString(),
+  //         duration: tenMinutes,
+  //       },
+  //     },
+  //     {
+  //       type: SlotEventType.Booked,
+  //       data: {
+  //         slotId,
+  //         patientId: uuid(),
+  //       },
+  //     },
+  //     {
+  //       type: SlotEventType.Cancelled,
+  //       data: {
+  //         slotId,
+  //         reason,
+  //       },
+  //     }
+  //   ).then(
+  //     [
+  //       {
+  //         slotId,
+  //         startTime: now,
+  //         duration: tenMinutes,
+  //       },
+  //     ],
+  //     repository.getSlotsAvailableOn(now)
+  //   );
+  // });
 });
